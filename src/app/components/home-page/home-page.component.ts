@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SportsNamesDataService } from '../../services/sports-names-data.service';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { SharingDataService } from '../../services/sharing-data.service';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +13,7 @@ export class HomePageComponent implements OnInit {
 public sportsList = [];
 public sportsChecked=[]
 @Output() public readonly colClicked: EventEmitter<any> = new EventEmitter();
-  constructor(private _data:SportsNamesDataService, private formBuilder: FormBuilder) { 
+  constructor(private _data:SportsNamesDataService,private router: Router, private sharingService: SharingDataService) { 
   this.sportsList = []
   this.sportsChecked = []
       
@@ -56,6 +57,8 @@ public sportsChecked=[]
 
   submit(){
     console.log(this.sportsChecked)
+    this.sharingService.setData(this.sportsChecked)
+    this.router.navigate(['/bets'])
   }
 
 }
