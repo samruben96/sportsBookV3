@@ -1,13 +1,18 @@
 <p>
   betting-view-home works!
 </p>
-<pre>{{teams | json}}</pre>
+
 
 <ul>
   <li *ngFor = "let bet of teams" class = "lines">
     <h3>{{bet.sport_nice}}</h3>
-    <input class = "custom-control-input" id = "sportBet" type="checkbox"/>
-    <label class = "custom-control-label" for="sportBet"[attr.for]="bet.home_team">{{bet.home_team}}</label>
+    <h4>{{bet.home_team}}</h4>
+    <p>{{bet.teams[0]}}</p>
+    <input class = "custom-control-input" id = "sportBet1" type="checkbox"/>
+    <label class = "custom-control-label" for="sportBet1"[attr.for]="bet.sites[0].odds.h2h[0] ">{{bet.sites[0].odds.h2h[0] | europeToUS}}</label>
+    <p>{{bet.teams[1]}}</p>
+    <input class = "custom-control-input" id = "sportBet2" type="checkbox"/>
+    <label class = "custom-control-label" for="sportBet2"[attr.for]="bet.sites[0].odds.h2h[1] ">{{bet.sites[0].odds.h2h[1] | europeToUS}}</label>
 
 
   </li>

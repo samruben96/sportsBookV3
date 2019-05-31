@@ -8,13 +8,15 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BettingViewHomeComponent } from './components/betting-view-home/betting-view-home.component';
+import { EuropeToUSPipe } from './pipes/europe-to-us.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     HomePageComponent,
-    BettingViewHomeComponent
+    BettingViewHomeComponent,
+    EuropeToUSPipe
   ],
   imports: [
     BrowserModule,
