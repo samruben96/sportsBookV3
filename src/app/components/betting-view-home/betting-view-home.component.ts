@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharingDataService } from '../../services/sharing-data.service';
 import { GetSportLinesAndTeamDataService } from '../../services/get-sport-lines-and-team-data.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-betting-view-home',
@@ -13,9 +14,10 @@ export class BettingViewHomeComponent implements OnInit {
   bettingInfo = []
   teams = []
   bettingLines = []
+  closeResult: string;
 
 
-  constructor(private router: Router, private sharingServie: SharingDataService, private _data:GetSportLinesAndTeamDataService) { 
+  constructor(private router: Router, private sharingServie: SharingDataService, private _data:GetSportLinesAndTeamDataService, private modalService: NgbModal) { 
     this.bettingInfo = []
     this.teams = []
     this.bettingLines = []
@@ -37,9 +39,12 @@ export class BettingViewHomeComponent implements OnInit {
        this.cleanAndGetCertainDataPoints(this.bettingInfo)
      })
     }
+   
+    
 
 
   }
+  
 
   public cleanAndGetCertainDataPoints(bet){
     for(var i = 0; i<bet.length; i++){
@@ -50,8 +55,13 @@ export class BettingViewHomeComponent implements OnInit {
     }
 
   }
+  openWindowCustomClass(content) {
+    this.modalService.open(content, { windowClass: 'dark-modal' });
+  }
 
 }
+
+
 
 
 // commence_time: 1559264400

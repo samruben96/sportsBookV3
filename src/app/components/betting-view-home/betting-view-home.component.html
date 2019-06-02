@@ -1,19 +1,39 @@
-<p>
-  betting-view-home works!
-</p>
 
-
-<ul>
-  <li *ngFor = "let bet of teams" class = "lines">
-    <h3>{{bet.sport_nice}}</h3>
-    <h4>{{bet.home_team}}</h4>
-    <p>{{bet.teams[0]}}</p>
-    <input class = "custom-control-input" id = "sportBet1" type="checkbox"/>
-    <label class = "custom-control-label" for="sportBet1"[attr.for]="bet.sites[0].odds.h2h[0] ">{{bet.sites[0].odds.h2h[0] | europeToUS}}</label>
-    <p>{{bet.teams[1]}}</p>
-    <input class = "custom-control-input" id = "sportBet2" type="checkbox"/>
-    <label class = "custom-control-label" for="sportBet2"[attr.for]="bet.sites[0].odds.h2h[1] ">{{bet.sites[0].odds.h2h[1] | europeToUS}}</label>
-
-
-  </li>
-</ul>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+  
+  
+<div class = "betContainer" *ngFor = "let bet of teams">
+<table  class = "lines">
+  <tr>
+    <td>
+      <label class = "team">{{bet.teams[0]}}</label>
+    </td>
+    <td>
+      <button  class="btn btn-outline-primary mb-2 mr-2" id = "sportBet1" (click)="openWindowCustomClass(content)">{{bet.sites[0].odds.h2h[0] | europeToUS}}</button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label class = "team">{{bet.teams[1]}}</label>
+    </td>
+    <td>
+      <button class="btn btn-outline-primary mb-2 mr-2" id = "sportBet2" (click)="openWindowCustomClass(content)">{{bet.sites[0].odds.h2h[1] | europeToUS}}</button>
+    </td>
+     
+  </tr>
+</table>
+<hr>
+</div>

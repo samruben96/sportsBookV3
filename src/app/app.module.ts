@@ -9,6 +9,7 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BettingViewHomeComponent } from './components/betting-view-home/betting-view-home.component';
 import { EuropeToUSPipe } from './pipes/europe-to-us.pipe';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,10 @@ import { EuropeToUSPipe } from './pipes/europe-to-us.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, BettingViewHomeComponent]
 })
 export class AppModule { }
