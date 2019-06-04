@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BettingViewHomeComponent } from './components/betting-view-home/betting-view-home.component';
 import { EuropeToUSPipe } from './pipes/europe-to-us.pipe';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { NeedAuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NavBarComponent,
     HomePageComponent,
     BettingViewHomeComponent,
-    EuropeToUSPipe
+    EuropeToUSPipe,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [NeedAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
