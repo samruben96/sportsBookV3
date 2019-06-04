@@ -1,16 +1,9 @@
 label.team{
     padding-right: 200px;
 }
-.btn.btn-primary{
-width: 50px;
+
+.modal-content {
+  -webkit-transform: translate(0,-50%);
+  -o-transform: translate(0,-50%);
+  transform: translate(0,-50%);
 }
-.dark-modal .modal-content {
-    background-color: #292b2c;
-    color: white;
-  }
-  .dark-modal .close {
-    color: white;
-  }
-  .light-blue-backdrop {
-    background-color: #5cb3fd;
-  }

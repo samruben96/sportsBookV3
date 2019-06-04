@@ -2,10 +2,11 @@
   <h1>Welcome!</h1>
 <ul>
   <li *ngFor = "let sport of sportsList" class = "filterSports">
-    <input class = "custom-control-input" id = "customCheck" type="checkbox" (click)="isClicked(sport)"/>
-    <label class = "custom-control-label" for="customCheck"[attr.for]="sport.title">{{sport.title}}</label>
+    <input  id = "customCheck" type="checkbox" (click)="isClicked(sport)"/>
+    <label  for="customCheck"[attr.for]="sport.title">{{sport.title}}</label>
 
   </li>
   <button class = "btn btn-success" id ="checked" (click)="submit()">Submit</button>
 </ul>
 </div>
+
