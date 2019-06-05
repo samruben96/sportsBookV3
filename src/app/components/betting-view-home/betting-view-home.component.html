@@ -8,7 +8,7 @@
       <label class = "team">{{bet.teams[0]}}</label>
     </td>
     <td>
-      <button class="btn btn-lg btn-outline-primary" value = "{{bet.sites[0].odds.h2h[0] | europeToUS}}" (click)="open(content)">{{bet.sites[0].odds.h2h[0] | europeToUS}}</button>
+      <button class="btn btn-lg btn-outline-primary" id = "{{bet.teams[0]}}" value = "{{bet.sites[0].odds.h2h[0] | europeToUS}}" (click)="open(content, $event)">{{bet.sites[0].odds.h2h[0] | europeToUS}}</button>
     </td>
   </tr>
   <tr>
@@ -16,7 +16,7 @@
       <label class = "team">{{bet.teams[1]}}</label>
     </td>
     <td>
-      <button class="btn btn-lg btn-outline-primary" value = "{{bet.sites[0].odds.h2h[1] | europeToUS}}" (click)="open(content)">{{bet.sites[0].odds.h2h[1] | europeToUS}}</button>
+      <button class="btn btn-lg btn-outline-primary" id = "{{bet.teams[1]}}" value = "{{bet.sites[0].odds.h2h[1] | europeToUS}}" (click)="open(content, $event)">{{bet.sites[0].odds.h2h[1] | europeToUS}}</button>
     </td>
      
   </tr>
@@ -25,17 +25,20 @@
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Enter Amount</h4>
+    <h4 class="modal-title" id="modal-basic-title">Betting Slip</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <form>
+      <p ng-value = "team"></p>
       <div class="form-group">
+        <p>Team: {{teamClicked}}</p>
+        <p>Odds: {{teamLine}}</p>
         <label for="bettingAmount">Amount:</label>
         <div class="input-group">
-          <input id="bettingAmount" class="form-control" placeholder="" name="bet" >
+          <input  inputmode="numeric" pattern="[0-9]*" id="bettingAmount" class="form-control" placeholder="" name="bet"  (input)="calculateOdds($event.target.value)" >
           <div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="bet.toggle()" type="button"></button>
           </div>
@@ -44,6 +47,8 @@
     </form>
   </div>
   <div class="modal-footer">
+    <p>Betting: ${{amountBet}}</p>
+    <p>To Win: ${{moneyLineResult}}</p>
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Confirm</button>
   </div>
 </ng-template>

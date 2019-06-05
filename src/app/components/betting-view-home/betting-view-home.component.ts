@@ -15,7 +15,10 @@ export class BettingViewHomeComponent implements OnInit {
   teams = []
   bettingLines = []
   closeResult: string;
-
+  teamClicked: string;
+  teamLine: string;
+  moneyLineResult: Number;
+  amountBet: any;
 
   constructor(private router: Router, private sharingServie: SharingDataService, private _data:GetSportLinesAndTeamDataService, private modalService: NgbModal) { 
     this.bettingInfo = []
@@ -55,12 +58,38 @@ export class BettingViewHomeComponent implements OnInit {
     }
 
   }
-  open(content) {
+  open(content, event: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+    this.teamClicked = (event.target).id
+    
+    this.teamLine = (event.target.value)
+    // this.calculateOdds(event.target.value)
+    
+
+   
+  }
+
+  calculateOdds(amountVal){
+    this.amountBet = amountVal
+    console.log(this.teamLine)
+    if(+this.teamLine > 0){
+      this.moneyLineResult = Math.round(+amountVal * (+this.teamLine/100));
+    
+      return this.moneyLineResult;
+    }else{
+      this.moneyLineResult = Math.round(Math.abs(+amountVal/(+this.teamLine/100)));
+      
+      return this.moneyLineResult;
+    }
+    
+   
+
+
+    
   }
 
   private getDismissReason(reason: any): string {

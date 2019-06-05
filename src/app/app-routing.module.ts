@@ -5,7 +5,7 @@ import { BettingViewHomeComponent } from './components/betting-view-home/betting
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { NeedAuthGuard } from './auth.guard';
 
-const routes: Routes = [{path:"", component: LoginPageComponent},{path:"home",component:HomePageComponent, canActivate: [NeedAuthGuard]},{path:"bets", component:BettingViewHomeComponent}];
+const routes: Routes = [{path:"", component: LoginPageComponent},{path:"home",component:HomePageComponent, canActivate: [NeedAuthGuard]},{path:"bets", component:BettingViewHomeComponent,canActivate: [NeedAuthGuard]}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
