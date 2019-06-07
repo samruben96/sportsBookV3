@@ -1,17 +1,19 @@
-<div class="container">
+<!-- <div class="container">
   <button (click)="logout()">Logout</button>
-</div>
-
+</div> -->
+<app-nav-bar></app-nav-bar>
 
 <div style = "text-align: center">
-  <h1>Welcome!</h1>
+  <h1 class = "header">Welcome!</h1>
 <ul>
   <li *ngFor = "let sport of sportsList" class = "filterSports">
-    <input  id = "customCheck" type="checkbox" (click)="isClicked(sport)"/>
-    <label  for="customCheck"[attr.for]="sport.title">{{sport.title}}</label>
+    <input class = "css-checkbox" name="customCheck"  id = "customCheck" type="checkbox" (click)="isClicked(sport)"/>
+    <label class="css-label" for="customCheck" [attr.for]="sport.title">{{sport.title}}</label>
 
   </li>
+  <div class = 'btnbtn'>
   <button class = "btn btn-success" id ="checked" (click)="submit()">Submit</button>
+</div>
 </ul>
 </div>
 

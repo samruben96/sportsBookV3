@@ -15,8 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { UserComponent } from './components/user/user.component';
+
 import { AuthGuard } from './services/core/auth.guard';
 import { UserService } from './services/core/user.service';
 import { FirebaseUserModel } from './services/core/user.model';
@@ -32,8 +31,7 @@ import { UserResolver } from './components/user/user.resolver';
     BettingViewHomeComponent,
     EuropeToUSPipe,
     LoginComponent,
-    RegisterComponent,
-    UserComponent,
+
 
    
     

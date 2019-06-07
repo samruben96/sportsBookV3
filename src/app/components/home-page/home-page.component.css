@@ -4,4 +4,14 @@
     float: left;
     width: 25%; */
     list-style-type: none;
+    width:48%; 
+    display: inline-block;
+   
+}
+.header{
+    margin-bottom: 50px;
+}
+
+.btnbtn{
+    margin-top: 20px;
 }
