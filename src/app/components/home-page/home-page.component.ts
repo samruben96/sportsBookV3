@@ -6,7 +6,7 @@ import { SharingDataService } from '../../services/sharing-data.service';
 import { UserService } from 'src/app/services/core/user.service';
 import { AuthService } from 'src/app/services/core/auth.service';
 import { FirebaseUserModel } from 'src/app/services/core/user.model';
-import { Location } from '@angular/common';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
@@ -23,7 +23,8 @@ profileForm: FormGroup;
   constructor(private _data:SportsNamesDataService,private router: Router, private sharingService: SharingDataService, public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
-    private fb: FormBuilder) { 
+    private fb: FormBuilder,
+    private location: Location) { 
   this.sportsList = []
   this.sportsChecked = []
       
