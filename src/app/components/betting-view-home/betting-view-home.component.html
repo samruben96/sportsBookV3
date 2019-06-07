@@ -3,18 +3,18 @@
 <div class = "betContainer" *ngFor = "let bet of teams">
 <table  class = "lines">
   <tr>
-    <td>
+    <td  class="col-sm">
       <label class = "team">{{bet.teams[0]}}</label>
     </td>
-    <td>
+    <td  class="col-sm" id = "betLine">
       <button class="btn btn-lg btn-outline-primary" id = "{{bet.teams[0]}}" value = "{{bet.sites[0].odds.h2h[0] | europeToUS}}" (click)="open(content, $event)">{{bet.sites[0].odds.h2h[0] | europeToUS}}</button>
     </td>
   </tr>
   <tr>
-    <td>
+    <td  class="col-sm">
       <label class = "team">{{bet.teams[1]}}</label>
     </td>
-    <td>
+    <td  class="col-sm" id = "betLine">
       <button class="btn btn-lg btn-outline-primary" id = "{{bet.teams[1]}}" value = "{{bet.sites[0].odds.h2h[1] | europeToUS}}" (click)="open(content, $event)">{{bet.sites[0].odds.h2h[1] | europeToUS}}</button>
     </td>
      
