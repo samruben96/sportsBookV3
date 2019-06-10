@@ -19,7 +19,8 @@ export class BettingViewHomeComponent implements OnInit {
   teamLine: string;
   moneyLineResult: Number;
   amountBet: any;
-
+  public buttonName:any = "Continue"
+  public show:boolean = false;
   constructor(private router: Router, private sharingServie: SharingDataService, private _data:GetSportLinesAndTeamDataService, private modalService: NgbModal) { 
     this.bettingInfo = []
     this.teams = []
@@ -52,7 +53,12 @@ export class BettingViewHomeComponent implements OnInit {
   public cleanAndGetCertainDataPoints(bet){
     for(var i = 0; i<bet.length; i++){
       console.log("Teams: "+bet[i].teams)
-      this.teams.push(bet[i])
+      if(bet[i].sites[0].odds !== undefined){
+        this.teams.push(bet[i])
+      }else{
+        break;
+      }
+    
     
       
     }
@@ -71,6 +77,17 @@ export class BettingViewHomeComponent implements OnInit {
     
 
    
+  }
+  closeAndOpen(){
+    this.show = !this.show
+    if(this.show){
+      this.buttonName = "Confirm"
+    }else{
+      this.router.navigateByUrl('betConfirmed')
+      this.modalService.dismissAll()
+    }
+    // this.modalService.open(content,{ariaLabelledBy: 'modal-basic-title1'})
+
   }
 
   calculateOdds(amountVal){

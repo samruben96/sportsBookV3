@@ -20,6 +20,7 @@ import { AuthGuard } from './services/core/auth.guard';
 import { UserService } from './services/core/user.service';
 import { FirebaseUserModel } from './services/core/user.model';
 import { UserResolver } from './components/user/user.resolver';
+import { BettingConfirmationPageComponent } from './components/betting-confirmation-page/betting-confirmation-page.component';
 
 
 
@@ -31,6 +32,7 @@ import { UserResolver } from './components/user/user.resolver';
     BettingViewHomeComponent,
     EuropeToUSPipe,
     LoginComponent,
+    BettingConfirmationPageComponent,
 
 
    

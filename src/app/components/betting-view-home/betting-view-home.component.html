@@ -38,6 +38,7 @@
         <label for="bettingAmount">Amount:</label>
         <div class="input-group">
           <input  inputmode="numeric" pattern="[0-9]*" id="bettingAmount" class="form-control" placeholder="" name="bet"  (input)="calculateOdds($event.target.value)" >
+          
           <div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="bet.toggle()" type="button"></button>
           </div>
@@ -45,10 +46,15 @@
       </div>
     </form>
   </div>
+  <div *ngIf= 'show'>
+    Enter Password: <input type = "paswword">
+  </div>
   <div class="modal-footer">
     <p>Betting: ${{amountBet}}</p>
     <p>To Win: ${{moneyLineResult}}</p>
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Confirm</button>
+    <button type="button" class="btn btn-outline-dark"  (click)="closeAndOpen()">{{buttonName}}</button>
   </div>
+  
 </ng-template>
+
 
