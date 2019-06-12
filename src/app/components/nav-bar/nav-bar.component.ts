@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/core/auth.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,16 +9,16 @@ import {Location} from '@angular/common';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private authService:AuthService, private location:Location) { }
+  constructor(private authService: AuthService, private location: Location) { }
 
   ngOnInit() {
   }
-  logout(){
+  logout() {
     this.authService.doLogout()
-    .then((res) => {
-      this.location.back();
-    }, (error) => {
-      console.log("Logout error", error);
-    });
+      .then((res) => {
+        this.location.back();
+      }, (error) => {
+        console.log("Logout error", error);
+      });
   }
 }

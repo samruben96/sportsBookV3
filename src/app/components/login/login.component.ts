@@ -23,8 +23,8 @@ export class LoginComponent {
 
   createForm() {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required ],
-      password: ['',Validators.required]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -49,13 +49,13 @@ export class LoginComponent {
   //   })
   // }
 
-  tryLogin(value){
+  tryLogin(value) {
     this.authService.doLogin(value)
-    .then(res => {
-      this.router.navigate(['/home']);
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-    })
+      .then(res => {
+        this.router.navigate(['/home']);
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+      })
   }
 }

@@ -1,26 +1,30 @@
 <!-- https://angular-templates.io/tutorials/about/angular-crud-with-firebase -->
 <app-nav-bar></app-nav-bar>
-<div class = "betContainer" *ngFor = "let bet of teams">
-<table  class = "lines">
-  <tr>
-    <td  class="col-sm">
-      <label class = "team">{{bet.teams[0]}}</label>
-    </td>
-    <td  class="col-sm" id = "betLine">
-      <button class="btn btn-lg btn-outline-primary" id = "{{bet.teams[0]}}" value = "{{bet.sites[0].odds.h2h[0] | europeToUS}}" (click)="open(content, $event)">{{bet.sites[0].odds.h2h[0] | europeToUS}}</button>
-    </td>
-  </tr>
-  <tr>
-    <td  class="col-sm">
-      <label class = "team">{{bet.teams[1]}}</label>
-    </td>
-    <td  class="col-sm" id = "betLine">
-      <button class="btn btn-lg btn-outline-primary" id = "{{bet.teams[1]}}" value = "{{bet.sites[0].odds.h2h[1] | europeToUS}}" (click)="open(content, $event)">{{bet.sites[0].odds.h2h[1] | europeToUS}}</button>
-    </td>
-     
-  </tr>
-</table>
-<hr>
+<div class="betContainer" *ngFor="let bet of teams">
+  <table class="lines">
+    <tr>
+      <td class="col-sm">
+        <label class="team">{{bet.teams[0]}}</label>
+      </td>
+      <td class="col-sm" id="betLine">
+        <button class="btn btn-lg btn-outline-primary" id="{{bet.teams[0]}}"
+          value="{{bet.sites[0].odds.h2h[0] | europeToUS}}"
+          (click)="open(content, $event)">{{bet.sites[0].odds.h2h[0] | europeToUS}}</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-sm">
+        <label class="team">{{bet.teams[1]}}</label>
+      </td>
+      <td class="col-sm" id="betLine">
+        <button class="btn btn-lg btn-outline-primary" id="{{bet.teams[1]}}"
+          value="{{bet.sites[0].odds.h2h[1] | europeToUS}}"
+          (click)="open(content, $event)">{{bet.sites[0].odds.h2h[1] | europeToUS}}</button>
+      </td>
+
+    </tr>
+  </table>
+  <hr>
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -31,14 +35,15 @@
   </div>
   <div class="modal-body">
     <form>
-      <p ng-value = "team"></p>
+      <p ng-value="team"></p>
       <div class="form-group">
         <p>Team: {{teamClicked}}</p>
         <p>Odds: {{teamLine}}</p>
         <label for="bettingAmount">Amount:</label>
         <div class="input-group">
-          <input  inputmode="numeric" pattern="[0-9]*" id="bettingAmount" class="form-control" placeholder="" name="bet"  (input)="calculateOdds($event.target.value)" >
-          
+          <input inputmode="numeric" pattern="[0-9]*" id="bettingAmount" class="form-control" placeholder="" name="bet"
+            (input)="calculateOdds($event.target.value)">
+
           <div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="bet.toggle()" type="button"></button>
           </div>
@@ -46,15 +51,13 @@
       </div>
     </form>
   </div>
-  <div *ngIf= 'show'>
-    Enter Password: <input id = "userPW" type="password" class="form-control" >
+  <div *ngIf='show'>
+    Enter Password: <input id="userPW" type="password" class="form-control">
   </div>
   <div class="modal-footer">
     <p>Betting: ${{amountBet}}</p>
     <p>To Win: ${{moneyLineResult}}</p>
     <button type="button" class="btn btn-outline-dark" (click)="changeVal()">{{buttonName}}</button>
   </div>
-  
+
 </ng-template>
-
-

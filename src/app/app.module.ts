@@ -21,6 +21,7 @@ import { UserService } from './services/core/user.service';
 import { FirebaseUserModel } from './services/core/user.model';
 import { UserResolver } from './components/user/user.resolver';
 import { BettingConfirmationPageComponent } from './components/betting-confirmation-page/betting-confirmation-page.component';
+import { PendingBetsComponent } from './components/pending-bets/pending-bets.component';
 
 
 
@@ -33,6 +34,7 @@ import { BettingConfirmationPageComponent } from './components/betting-confirmat
     EuropeToUSPipe,
     LoginComponent,
     BettingConfirmationPageComponent,
+    PendingBetsComponent,
 
 
    

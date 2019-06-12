@@ -9,8 +9,8 @@ export class GetSportLinesAndTeamDataService {
 
   constructor(private http: HttpClient) { }
 
-  public loadData(value){
+  public loadData(value) {
     return this.http.get(`https://api.the-odds-api.com/v3/odds?sport=${value}&region=us&mkt=h2h&apiKey=9876ae80f035fbf0a1891c09d81e60cf`
-  ).pipe(map(result=>(<any> result)))
+    ).pipe(map(result => (<any>result)))
   }
 }

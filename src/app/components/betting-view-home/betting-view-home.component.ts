@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharingDataService } from '../../services/sharing-data.service';
 import { GetSportLinesAndTeamDataService } from '../../services/get-sport-lines-and-team-data.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/core/auth.service';
 import * as $ from 'jquery';
 import * as firebase from 'firebase/app';
@@ -21,21 +21,21 @@ export class BettingViewHomeComponent implements OnInit {
   closeResult: string;
   teamClicked: string;
   teamLine: string;
-  
+
   // checkExists: any;
-  userPASSWORD:string;
+  userPASSWORD: string;
   moneyLineResult: Number;
   amountBet: any;
-  public buttonName:any = "Continue"
-  public show:boolean = false;
+  public buttonName: any = "Continue"
+  public show: boolean = false;
   errorMessage: string = '';
-  constructor(private router: Router, 
-    private sharingServie: SharingDataService, 
-    private _data:GetSportLinesAndTeamDataService, 
+  constructor(private router: Router,
+    private sharingServie: SharingDataService,
+    private _data: GetSportLinesAndTeamDataService,
     private modalService: NgbModal,
     public authService: AuthService,
     private userIn: UserService
-    ) { 
+  ) {
     this.bettingInfo = []
     this.teams = []
     this.bettingLines = []
@@ -45,98 +45,98 @@ export class BettingViewHomeComponent implements OnInit {
     this.checkedData = this.sharingServie.getData();
     console.log(this.checkedData)
     this.recieveData(this.checkedData)
-   
 
-    
-    
+
+
+
 
   }
 
 
 
-  public recieveData(list){
-    for(var i =0; i<list.length; i++){
+  public recieveData(list) {
+    for (var i = 0; i < list.length; i++) {
       console.log(list[i])
-     const sportLines =  this._data.loadData(list[i]);
-     sportLines.subscribe(result =>{
-       this.bettingInfo = result.data;
-       console.log(this.bettingInfo)
-       this.cleanAndGetCertainDataPoints(this.bettingInfo)
-     })
+      const sportLines = this._data.loadData(list[i]);
+      sportLines.subscribe(result => {
+        this.bettingInfo = result.data;
+        console.log(this.bettingInfo)
+        this.cleanAndGetCertainDataPoints(this.bettingInfo)
+      })
     }
-   
-    
+
+
 
 
   }
-  
 
-  public cleanAndGetCertainDataPoints(bet){
-    for(var i = 0; i<bet.length; i++){
-      console.log("Teams: "+bet[i].teams)
-      if(bet[i].sites[0].odds !== undefined){
+
+  public cleanAndGetCertainDataPoints(bet) {
+    for (var i = 0; i < bet.length; i++) {
+      console.log("Teams: " + bet[i].teams)
+      if (bet[i].sites[0].odds !== undefined) {
         this.teams.push(bet[i])
-      }else{
+      } else {
         break;
       }
-    
-    
-      
+
+
+
     }
 
   }
   open(content, event: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
     this.teamClicked = (event.target).id
-    
+
     this.teamLine = (event.target.value)
     // this.calculateOdds(event.target.value)
-    
 
-   
+
+
   }
 
-  
-  checkExist = setInterval(function() {
+
+  checkExist = setInterval(function () {
     if ($('#userPW').length) {
       // this.userPASSWORD =  $('#userPW').val();
       // console.log(this.userPASSWORD)
-       clearInterval(this.checkExist);
+      clearInterval(this.checkExist);
     }
- }, 100);
-  closeAndOpen(){
-    this.show = !this.show
-    if(this.show){
-      this.buttonName = "Confirm"
-    }else{
-      this.router.navigateByUrl('betConfirmed')
-      this.modalService.dismissAll()
-    }
-    // this.modalService.open(content,{ariaLabelledBy: 'modal-basic-title1'})
+  }, 100);
+  // closeAndOpen(){
+  //   this.show = !this.show
+  //   if(this.show){
+  //     this.buttonName = "Confirm"
+  //   }else{
+  //     this.router.navigateByUrl('betConfirmed')
+  //     this.modalService.dismissAll()
+  //   }
+  //   // this.modalService.open(content,{ariaLabelledBy: 'modal-basic-title1'})
 
-  }
+  // }
 
-  calculateOdds(amountVal){
+  calculateOdds(amountVal) {
     this.amountBet = amountVal
     console.log(this.teamLine)
-    if(+this.teamLine > 0){
-      this.moneyLineResult = Math.round(+amountVal * (+this.teamLine/100));
-    
+    if (+this.teamLine > 0) {
+      this.moneyLineResult = Math.round(+amountVal * (+this.teamLine / 100));
+
       return this.moneyLineResult;
-    }else{
-      this.moneyLineResult = Math.round(Math.abs(+amountVal/(+this.teamLine/100)));
-      
+    } else {
+      this.moneyLineResult = Math.round(Math.abs(+amountVal / (+this.teamLine / 100)));
+
       return this.moneyLineResult;
     }
-    
-   
 
 
-    
+
+
+
   }
 
   private getDismissReason(reason: any): string {
@@ -145,40 +145,40 @@ export class BettingViewHomeComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 
-  changeVal(){
+  changeVal() {
     this.show = !this.show
-    if(this.show){
+    if (this.show) {
       this.buttonName = "Confirm"
-    }else{
-      this.userPASSWORD =  $('#userPW').val();
+    } else {
+      this.userPASSWORD = $('#userPW').val();
       const user = firebase.auth().currentUser
       console.log(this.userPASSWORD)
-      this.authService.doPasswordLogin(user.email,String(this.userPASSWORD))
-    .then(res => {
-      this.router.navigate(['/betConfirmed']);
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-    })
-          this.modalService.dismissAll()
+      this.authService.doPasswordLogin(user.email, String(this.userPASSWORD))
+        .then(res => {
+          this.router.navigate(['/betConfirmed']);
+        }, err => {
+          console.log(err);
+          this.errorMessage = err.message;
+        })
+      this.modalService.dismissAll()
 
     }
-    
-   
+
+
   }
-  tryLogin(){
-
-   
-  }
+  // tryLogin(){
 
 
+  // }
 
 
-   
+
+
+
 }
 
 

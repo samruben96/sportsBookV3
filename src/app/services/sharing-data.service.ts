@@ -6,13 +6,13 @@ import { Injectable } from '@angular/core';
 export class SharingDataService {
   private data: any = undefined;
 
-  setData(data: any){
+  setData(data: any) {
     this.data = data;
   }
 
-  getData():any{
+  getData(): any {
     return this.data
   }
 
-  
+
 }

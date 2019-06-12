@@ -9,32 +9,32 @@ export class UserService {
   myGlobalEmail: any = undefined;
 
   constructor(
-   public db: AngularFirestore,
-   public afAuth: AngularFireAuth
-   
- ){
+    public db: AngularFirestore,
+    public afAuth: AngularFireAuth
+
+  ) {
 
 
- }
+  }
 
 
-  getCurrentUser(){
+  getCurrentUser() {
     return new Promise<any>((resolve, reject) => {
-      var user = firebase.auth().onAuthStateChanged(function(user){
+      var user = firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
           resolve(user);
-          
+
         } else {
           reject('No user logged in');
         }
       })
     })
-    
+
   }
-  
 
 
-  updateCurrentUser(value){
+
+  updateCurrentUser(value) {
     return new Promise<any>((resolve, reject) => {
       var user = firebase.auth().currentUser;
       user.updateProfile({
