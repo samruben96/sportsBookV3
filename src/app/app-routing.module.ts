@@ -16,8 +16,7 @@ export const rootRouterConfig: Routes = [
   { path: 'home', component: HomePageComponent,  resolve: { data: UserResolver}},
   {path: 'bets', component:BettingViewHomeComponent, resolve: { data: UserResolver}},
   {path: 'betConfirmed', component:BettingConfirmationPageComponent, resolve: { data: UserResolver}}
-
-];
+];   
 @NgModule({
   imports: [RouterModule.forRoot(rootRouterConfig)],
   exports: [RouterModule]
