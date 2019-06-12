@@ -47,12 +47,12 @@
     </form>
   </div>
   <div *ngIf= 'show'>
-    Enter Password: <input type = "paswword">
+    Enter Password: <input id = "userPW" type="password" class="form-control" >
   </div>
   <div class="modal-footer">
     <p>Betting: ${{amountBet}}</p>
     <p>To Win: ${{moneyLineResult}}</p>
-    <button type="button" class="btn btn-outline-dark"  (click)="closeAndOpen()">{{buttonName}}</button>
+    <button type="button" class="btn btn-outline-dark" (click)="changeVal()">{{buttonName}}</button>
   </div>
   
 </ng-template>

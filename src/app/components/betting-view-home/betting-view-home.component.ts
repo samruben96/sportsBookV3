@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { SharingDataService } from '../../services/sharing-data.service';
 import { GetSportLinesAndTeamDataService } from '../../services/get-sport-lines-and-team-data.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/services/core/auth.service';
+import * as $ from 'jquery';
+import * as firebase from 'firebase/app';
+import { UserService } from 'src/app/services/core/user.service';
 
 @Component({
   selector: 'app-betting-view-home',
@@ -17,11 +21,21 @@ export class BettingViewHomeComponent implements OnInit {
   closeResult: string;
   teamClicked: string;
   teamLine: string;
+  
+  // checkExists: any;
+  userPASSWORD:string;
   moneyLineResult: Number;
   amountBet: any;
   public buttonName:any = "Continue"
   public show:boolean = false;
-  constructor(private router: Router, private sharingServie: SharingDataService, private _data:GetSportLinesAndTeamDataService, private modalService: NgbModal) { 
+  errorMessage: string = '';
+  constructor(private router: Router, 
+    private sharingServie: SharingDataService, 
+    private _data:GetSportLinesAndTeamDataService, 
+    private modalService: NgbModal,
+    public authService: AuthService,
+    private userIn: UserService
+    ) { 
     this.bettingInfo = []
     this.teams = []
     this.bettingLines = []
@@ -31,7 +45,14 @@ export class BettingViewHomeComponent implements OnInit {
     this.checkedData = this.sharingServie.getData();
     console.log(this.checkedData)
     this.recieveData(this.checkedData)
+   
+
+    
+    
+
   }
+
+
 
   public recieveData(list){
     for(var i =0; i<list.length; i++){
@@ -78,6 +99,15 @@ export class BettingViewHomeComponent implements OnInit {
 
    
   }
+
+  
+  checkExist = setInterval(function() {
+    if ($('#userPW').length) {
+      // this.userPASSWORD =  $('#userPW').val();
+      // console.log(this.userPASSWORD)
+       clearInterval(this.checkExist);
+    }
+ }, 100);
   closeAndOpen(){
     this.show = !this.show
     if(this.show){
@@ -118,7 +148,42 @@ export class BettingViewHomeComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
+
+  changeVal(){
+    this.show = !this.show
+    if(this.show){
+      this.buttonName = "Confirm"
+    }else{
+      this.userPASSWORD =  $('#userPW').val();
+      const user = firebase.auth().currentUser
+      console.log(this.userPASSWORD)
+      this.authService.doPasswordLogin(user.email,String(this.userPASSWORD))
+    .then(res => {
+      this.router.navigate(['/betConfirmed']);
+    }, err => {
+      console.log(err);
+      this.errorMessage = err.message;
+    })
+          this.modalService.dismissAll()
+
+    }
+    
+   
+  }
+  tryLogin(){
+
+   
+  }
+
+
+
+
+   
 }
+
+
+
+
 
 
 

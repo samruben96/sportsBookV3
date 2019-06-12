@@ -6,11 +6,15 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class UserService {
+  myGlobalEmail: any = undefined;
 
   constructor(
    public db: AngularFirestore,
    public afAuth: AngularFireAuth
+   
  ){
+
+
  }
 
 
@@ -19,12 +23,16 @@ export class UserService {
       var user = firebase.auth().onAuthStateChanged(function(user){
         if (user) {
           resolve(user);
+          
         } else {
           reject('No user logged in');
         }
       })
     })
+    
   }
+  
+
 
   updateCurrentUser(value){
     return new Promise<any>((resolve, reject) => {
