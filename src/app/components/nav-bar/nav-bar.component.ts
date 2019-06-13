@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/core/auth.service';
 import { Location } from '@angular/common';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,10 +9,13 @@ import { Location } from '@angular/common';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor(private authService: AuthService, private location: Location) { }
+  public user;
+  constructor(private authService: AuthService, private location: Location) { 
+    this.user = ''
+  }
 
   ngOnInit() {
+     this.user = firebase.auth().currentUser.email
   }
   logout() {
     this.authService.doLogout()
@@ -21,4 +25,6 @@ export class NavBarComponent implements OnInit {
         console.log("Logout error", error);
       });
   }
+
+
 }

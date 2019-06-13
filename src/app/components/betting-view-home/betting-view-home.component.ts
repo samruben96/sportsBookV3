@@ -100,7 +100,7 @@ export class BettingViewHomeComponent implements OnInit {
 
   }
 
-
+  
   checkExist = setInterval(function () {
     if ($('#userPW').length) {
       // this.userPASSWORD =  $('#userPW').val();
@@ -149,11 +149,14 @@ export class BettingViewHomeComponent implements OnInit {
     }
   }
 
+
+
   changeVal() {
     this.show = !this.show
     if (this.show) {
       this.buttonName = "Confirm"
     } else {
+      //Grabs users password and checks it
       this.userPASSWORD = $('#userPW').val();
       const user = firebase.auth().currentUser
       console.log(this.userPASSWORD)
