@@ -44,15 +44,15 @@
           <input inputmode="numeric" pattern="[0-9]*" id="bettingAmount" class="form-control" placeholder="" name="bet"
             (input)="calculateOdds($event.target.value)">
 
-          <div class="input-group-append">
+          <!-- <div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="bet.toggle()" type="button"></button>
-          </div>
+          </div> -->
         </div>
       </div>
     </form>
   </div>
-  <div *ngIf='show'>
-    Enter Password: <input id="userPW" type="password" class="form-control">
+  <div class = "input-group" *ngIf='show'>
+    <label for ="userPW">Enter Password:</label> <input id="userPW" type="password" class="form-control">
   </div>
   <div class="modal-footer">
     <p>Betting: ${{amountBet}}</p>

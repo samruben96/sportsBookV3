@@ -22,6 +22,7 @@ import { FirebaseUserModel } from './services/core/user.model';
 import { UserResolver } from './components/user/user.resolver';
 import { BettingConfirmationPageComponent } from './components/betting-confirmation-page/betting-confirmation-page.component';
 import { PendingBetsComponent } from './components/pending-bets/pending-bets.component';
+import { LiveScoreComponent } from './components/live-score/live-score.component';
 
 
 
@@ -35,6 +36,7 @@ import { PendingBetsComponent } from './components/pending-bets/pending-bets.com
     LoginComponent,
     BettingConfirmationPageComponent,
     PendingBetsComponent,
+    LiveScoreComponent,
 
 
    

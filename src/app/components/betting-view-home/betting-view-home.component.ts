@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/core/auth.service';
 import * as $ from 'jquery';
 import * as firebase from 'firebase/app';
 import { UserService } from 'src/app/services/core/user.service';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-betting-view-home',
@@ -34,7 +35,8 @@ export class BettingViewHomeComponent implements OnInit {
     private _data: GetSportLinesAndTeamDataService,
     private modalService: NgbModal,
     public authService: AuthService,
-    private userIn: UserService
+    private userIn: UserService,
+    private firebaseService: FirebaseService
   ) {
     this.bettingInfo = []
     this.teams = []
@@ -162,11 +164,13 @@ export class BettingViewHomeComponent implements OnInit {
       console.log(this.userPASSWORD)
       this.authService.doPasswordLogin(user.email, String(this.userPASSWORD))
         .then(res => {
+          this.firebaseService.createUser(user.email,this.amountBet, this.moneyLineResult)
           this.router.navigate(['/betConfirmed']);
         }, err => {
           console.log(err);
           this.errorMessage = err.message;
         })
+        
       this.modalService.dismissAll()
 
     }
