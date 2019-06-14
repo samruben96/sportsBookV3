@@ -8,6 +8,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { BettingViewHomeComponent } from './components/betting-view-home/betting-view-home.component';
 import { BettingConfirmationPageComponent } from './components/betting-confirmation-page/betting-confirmation-page.component';
 import { PendingBetsComponent } from './components/pending-bets/pending-bets.component';
+import { AdminPageComponent } from './components/admin/admin-page/admin-page.component';
 
 
 
@@ -17,6 +18,7 @@ export const rootRouterConfig: Routes = [
   { path: 'home', component: HomePageComponent, resolve: { data: UserResolver } },
   { path: 'pending', component: PendingBetsComponent, resolve: { data: UserResolver } },
   { path: 'bets', component: BettingViewHomeComponent, resolve: { data: UserResolver } },
+  { path: 'admin', component: AdminPageComponent, resolve: { data: UserResolver } },
   { path: 'betConfirmed', component: BettingConfirmationPageComponent, resolve: { data: UserResolver } }
 ];
 @NgModule({

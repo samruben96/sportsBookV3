@@ -50,6 +50,17 @@ export class LoginComponent {
   // }
 
   tryLogin(value) {
+    if(value.email === 'admin@aol.com' && value.password === "adminadmin" ){
+      this.authService.doLogin(value)
+      .then(res=>{
+        this.router.navigate(['/admin']);
+      }), err =>{
+        console.log(err)
+        this.errorMessage = err.message
+      }
+    }else{
+
+
     this.authService.doLogin(value)
       .then(res => {
         this.router.navigate(['/home']);
@@ -57,5 +68,6 @@ export class LoginComponent {
         console.log(err);
         this.errorMessage = err.message;
       })
+    }
   }
 }
