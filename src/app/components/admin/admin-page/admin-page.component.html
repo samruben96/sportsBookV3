@@ -1,3 +1,16 @@
-<p>
-  admin-page works!
-</p>
+<table class="table table-striped">
+  <thead>
+    <th scope = "col">User</th>
+    <th scope = "col" >Amount Bet</th>
+    <th scope = "col" >Amount Win</th>
+    <th scope = "col">+/-</th>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let bet of bets; let i = index">
+      <td>{{bet.betInfo.userName}}</td>
+      <td>{{bet.betInfo.amountBet}}</td>
+      <td>{{bet.betInfo.amountWin}}</td>
+
+    </tr>
+  </tbody>
+</table>

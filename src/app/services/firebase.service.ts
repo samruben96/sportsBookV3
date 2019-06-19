@@ -10,7 +10,7 @@ export class FirebaseService {
   createUser(user,amountPaid,amountWin){
     return this.db.collection('users').add({
       userName: user,
-      amountBet: amountPaid,
+      amountBet: Number(amountPaid),
       amountWin: amountWin
      
     });

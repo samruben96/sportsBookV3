@@ -9,7 +9,6 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BettingViewHomeComponent } from './components/betting-view-home/betting-view-home.component';
 import { EuropeToUSPipe } from './pipes/europe-to-us.pipe';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -24,6 +23,8 @@ import { BettingConfirmationPageComponent } from './components/betting-confirmat
 import { PendingBetsComponent } from './components/pending-bets/pending-bets.component';
 import { LiveScoreComponent } from './components/live-score/live-score.component';
 import { AdminPageComponent } from './components/admin/admin-page/admin-page.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -39,6 +40,7 @@ import { AdminPageComponent } from './components/admin/admin-page/admin-page.com
     PendingBetsComponent,
     LiveScoreComponent,
     AdminPageComponent,
+    
 
 
    
@@ -54,6 +56,7 @@ import { AdminPageComponent } from './components/admin/admin-page/admin-page.com
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    MDBBootstrapModule.forRoot()
 
   ],
   providers: [AuthGuard, FirebaseUserModel, UserService, UserResolver],
